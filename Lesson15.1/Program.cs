@@ -55,7 +55,7 @@ keyEvent.KeyDown += (sender, e) =>
             }
         default:
             {
-                Console.WriteLine("Команда не найдена!");
+                Console.WriteLine("\nКоманда не найдена!");
                 break;
             }
     }
