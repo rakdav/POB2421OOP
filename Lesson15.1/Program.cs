@@ -14,10 +14,50 @@ keyEvent.KeyDown += (sender, e) =>
                 break;
             }
         case 'S':
-            {
-
+            {   
+                try
+                {
+                    Console.Write("\nВведите длину:");
+                    int width = int.Parse(Console.ReadLine()!);
+                    Console.Write("Введите высоту:");
+                    int height = int.Parse(Console.ReadLine()!);
+                    Console.WindowHeight = height;
+                    Console.WindowWidth = width;
+                }
+                catch(FormatException) 
+                {
+                    Console.WriteLine("Неверный формат!");
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Окно на столько не растянется");
+                }
             }
             break;
+        case 'T':
+            {
+                Console.Write("\nВведите новый заголовок:");
+                Console.Title = Console.ReadLine()!;
+                Console.WriteLine();
+            }
+            break;
+        case 'R':
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.WriteLine();
+            }
+            break;
+        case 'E':
+            {
+                Console.Beep();
+                break;
+            }
+        default:
+            {
+                Console.WriteLine("Команда не найдена!");
+                break;
+            }
     }
 };
 ConsoleTitle();
@@ -27,6 +67,7 @@ do
     Console.Write("Введите команду:");
     ConsoleKeyInfo key = Console.ReadKey();
     ch = key.KeyChar;
+    keyEvent.OnKeyDown(key.KeyChar);
 }
 while (ch!='E');
 void CC(ConsoleColor color)
@@ -58,7 +99,7 @@ void ConsoleTitle()
 }
 void MyColor(bool F_or_B)
 {
-    Console.WriteLine("Введите цвет:");
+    Console.Write("\nВведите цвет:");
     string s=Console.ReadLine()!;
     switch(s)
     {
