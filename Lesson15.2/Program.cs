@@ -1,5 +1,5 @@
 ﻿Warehouse warehouse=new Warehouse();
-warehouse.MyEvent += DisplayMessage;
+warehouse.LowStock += DisplayMessage;
 warehouse.AddProduct(new Product() { Name="Apple",Quantity=12,
     DeliveryDate=DateTime.Parse("2024-10-03")});
 warehouse.RemoveProduct("Apple", 4);
@@ -39,7 +39,7 @@ class Warehouse
             if (CheckStock(productName) >= quantity)
             {
                 product.Quantity -= quantity;
-                if(product.Quantity<10) MyEvent?.Invoke($"На складе меньше 10 единиц" +
+                if(product.Quantity<10) LowStock?.Invoke($"На складе меньше 10 единиц" +
                     " товара "+productName);
             }
             else
@@ -58,7 +58,7 @@ class Warehouse
         }
         return 0;
     }
-    public event ProductChanged? MyEvent;
+    public event ProductChanged? LowStock;
     public delegate void ProductChanged(string product);
 }
 
