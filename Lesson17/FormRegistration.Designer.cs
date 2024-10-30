@@ -37,6 +37,8 @@
             dateTimePickerBirth = new DateTimePicker();
             buttonReg = new Button();
             labelWarning = new Label();
+            labelPasswordWarning = new Label();
+            labelEmailWarning = new Label();
             SuspendLayout();
             // 
             // textBoxLogin
@@ -71,6 +73,7 @@
             textBoxEmail.PlaceholderText = "Введите адрес электронной почты";
             textBoxEmail.Size = new Size(439, 35);
             textBoxEmail.TabIndex = 3;
+            textBoxEmail.TextChanged += textBoxEmail_TextChanged;
             // 
             // textBoxPassword
             // 
@@ -90,6 +93,7 @@
             textBoxPasswordRepeat.PlaceholderText = "Повторите пароль";
             textBoxPasswordRepeat.Size = new Size(439, 35);
             textBoxPasswordRepeat.TabIndex = 5;
+            textBoxPasswordRepeat.TextChanged += textBoxPasswordRepeat_TextChanged;
             // 
             // dateTimePickerBirth
             // 
@@ -106,6 +110,7 @@
             buttonReg.TabIndex = 7;
             buttonReg.Text = "ЗАРЕГИСТРИРОВАТЬСЯ";
             buttonReg.UseVisualStyleBackColor = true;
+            buttonReg.Click += buttonReg_Click;
             // 
             // labelWarning
             // 
@@ -118,11 +123,33 @@
             labelWarning.Size = new Size(0, 17);
             labelWarning.TabIndex = 8;
             // 
+            // labelPasswordWarning
+            // 
+            labelPasswordWarning.AutoSize = true;
+            labelPasswordWarning.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelPasswordWarning.ForeColor = Color.Red;
+            labelPasswordWarning.Location = new Point(62, 377);
+            labelPasswordWarning.Name = "labelPasswordWarning";
+            labelPasswordWarning.Size = new Size(0, 17);
+            labelPasswordWarning.TabIndex = 9;
+            // 
+            // labelEmailWarning
+            // 
+            labelEmailWarning.AutoSize = true;
+            labelEmailWarning.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            labelEmailWarning.ForeColor = Color.Red;
+            labelEmailWarning.Location = new Point(63, 262);
+            labelEmailWarning.Name = "labelEmailWarning";
+            labelEmailWarning.Size = new Size(0, 17);
+            labelEmailWarning.TabIndex = 10;
+            // 
             // FormRegistration
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(558, 547);
+            Controls.Add(labelEmailWarning);
+            Controls.Add(labelPasswordWarning);
             Controls.Add(labelWarning);
             Controls.Add(buttonReg);
             Controls.Add(dateTimePickerBirth);
@@ -151,5 +178,7 @@
         private DateTimePicker dateTimePickerBirth;
         private Button buttonReg;
         private Label labelWarning;
+        private Label labelPasswordWarning;
+        private Label labelEmailWarning;
     }
 }
