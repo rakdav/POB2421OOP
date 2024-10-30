@@ -12,7 +12,11 @@ namespace Lesson17
     internal class UserRegistration
     {
         public List<User> Users { get; set; } = new();
-        public void RegisterUser(User newUser)=>Users.Add(newUser);
+        public void RegisterUser(User newUser)
+        {
+            if(Users.Find(p=>p.Username!=newUser.Username||p.Email!=newUser.Email)==null)
+            Users.Add(newUser);
+        }
         public void SerializeUsersToJson(List<User> users, string fileName)
         {
             string json=JsonSerializer.Serialize(users);
