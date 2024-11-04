@@ -70,6 +70,7 @@
             buttonEnter.TabIndex = 3;
             buttonEnter.Text = "ОК";
             buttonEnter.UseVisualStyleBackColor = true;
+            buttonEnter.Click += buttonEnter_Click;
             // 
             // FormAutorization
             // 

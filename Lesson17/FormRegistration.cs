@@ -9,6 +9,7 @@ namespace Lesson17
         {
             InitializeComponent();
             userRegistration = new UserRegistration();
+            buttonReg.Enabled = false;
         }
 
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
@@ -47,25 +48,39 @@ namespace Lesson17
 
         private void buttonReg_Click(object sender, EventArgs e)
         {
-            if(userRegistration.ExistUser(textBoxLogin.Text))
+            if (userRegistration.ExistUser(textBoxLogin.Text))
             {
                 MessageBox.Show("Пользователь с таким логином существует!");
                 return;
             }
             int id = userRegistration.Users.Count + 1;
             User user = new User();
-            user.Id=id;
-            user.Username=textBoxLogin.Text;
+            user.Id = id;
+            user.Username = textBoxLogin.Text;
             user.FirstName = textBoxFirstName.Text;
             user.SecondName = textBoxLastName.Text;
             user.Email = textBoxEmail.Text;
             user.Password = textBoxPassword.Text;
-            user.RegistrationDate=DateTime.Now;
+            user.RegistrationDate = DateTime.Now;
             user.BirthDate = dateTimePickerBirth.Value;
+            user.Role = comboBoxRole.SelectedItem!.ToString();
             userRegistration.RegisterUser(user);
             userRegistration.SerializeUsersToJson(userRegistration.Users);
             this.Close();
         }
 
+        private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(textBoxLogin.Text!=""&&
+               textBoxFirstName.Text!=""&&
+               textBoxLastName.Text!=""&&
+               textBoxPassword.Text.Length>=6&&
+               textBoxPasswordRepeat.Text.Length >= 6&&
+               textBoxPassword.Text==textBoxPasswordRepeat.Text&&
+               comboBoxRole.SelectedIndex!=-1)
+            {
+                buttonReg.Enabled = true;
+            }
+        }
     }
 }

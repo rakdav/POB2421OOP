@@ -16,5 +16,6 @@ namespace Lesson17
         public string? Email { get; set; }
         public DateTime? RegistrationDate { get; set; }
         public DateTime? BirthDate { get; set; }
+        public string? Role { get; set; }
     }
 }

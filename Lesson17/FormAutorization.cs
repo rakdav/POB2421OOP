@@ -2,15 +2,15 @@ namespace Lesson17
 {
     public partial class FormAutorization : Form
     {
-        private UserRegistration userRegistration;
+        private UserAuthentification userAurization;
         public FormAutorization()
         {
             InitializeComponent();
-            userRegistration = new UserRegistration();
+            userAurization = new UserAuthentification();
             AutoCompleteStringCollection source = new AutoCompleteStringCollection();
-            if (userRegistration.Users != null)
+            if (userAurization.Users != null)
             {
-                foreach (User s in userRegistration.Users!)
+                foreach (User s in userAurization.Users!)
                 {
                     source.Add(s.Username!);
                 }
@@ -24,6 +24,16 @@ namespace Lesson17
         {
             FormRegistration formRegistration = new FormRegistration();
             formRegistration.Show();
+        }
+
+        private void buttonEnter_Click(object sender, EventArgs e)
+        {
+            if(userAurization.AuthentificationUser(textBoxLogin.Text,textBoxPassword.Text))
+            {
+                FormAtricles formAtricles = new FormAtricles();
+                formAtricles.Show();
+                this.Hide();
+            }
         }
     }
 }

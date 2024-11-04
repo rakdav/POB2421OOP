@@ -39,6 +39,7 @@
             labelWarning = new Label();
             labelPasswordWarning = new Label();
             labelEmailWarning = new Label();
+            comboBoxRole = new ComboBox();
             SuspendLayout();
             // 
             // textBoxLogin
@@ -104,7 +105,7 @@
             // 
             // buttonReg
             // 
-            buttonReg.Location = new Point(143, 460);
+            buttonReg.Location = new Point(149, 525);
             buttonReg.Name = "buttonReg";
             buttonReg.Size = new Size(266, 62);
             buttonReg.TabIndex = 7;
@@ -143,11 +144,22 @@
             labelEmailWarning.Size = new Size(0, 17);
             labelEmailWarning.TabIndex = 10;
             // 
+            // comboBoxRole
+            // 
+            comboBoxRole.FormattingEnabled = true;
+            comboBoxRole.Items.AddRange(new object[] { "Автор", "Читатель" });
+            comboBoxRole.Location = new Point(62, 456);
+            comboBoxRole.Name = "comboBoxRole";
+            comboBoxRole.Size = new Size(439, 38);
+            comboBoxRole.TabIndex = 11;
+            comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
+            // 
             // FormRegistration
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(558, 547);
+            ClientSize = new Size(558, 636);
+            Controls.Add(comboBoxRole);
             Controls.Add(labelEmailWarning);
             Controls.Add(labelPasswordWarning);
             Controls.Add(labelWarning);
@@ -180,5 +192,6 @@
         private Label labelWarning;
         private Label labelPasswordWarning;
         private Label labelEmailWarning;
+        public ComboBox comboBoxRole;
     }
 }
