@@ -31,10 +31,10 @@ namespace Lesson17
                     Users.Add(newUser);
             }
         }
-        public void SerializeUsersToJson(List<User> users, string fileName)
+        public void SerializeUsersToJson(List<User> users)
         {
             string json=JsonSerializer.Serialize(users);
-            using (StreamWriter writer = new StreamWriter(fileName, false))
+            using (StreamWriter writer = new StreamWriter(path, false))
             {
                 writer.WriteLineAsync(json);
             }
