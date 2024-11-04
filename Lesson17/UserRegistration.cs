@@ -13,18 +13,20 @@ namespace Lesson17
 {
     internal class UserRegistration
     {
+        private string path = "users.json";
         public List<User> Users { get; set; } = new();
+        public UserRegistration()
+        {
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+            }
+            Users = getUsers();
+        }
         public void RegisterUser(User newUser)
         {
-            string path = "users.json";
-            if (!File.Exists(path)) File.Create(path);
             using (StreamReader reader = new StreamReader(path))
             {
-                string text = reader.ReadToEnd();
-                if (text != "")
-                {
-                    Users = JsonSerializer.Deserialize<List<User>>(text)!;
-                }
                 if (Users.Find(p => p.Username != newUser.Username || p.Email != newUser.Email) == null)
                     Users.Add(newUser);
             }
@@ -39,35 +41,21 @@ namespace Lesson17
         }
         public bool ExistUser(string username)
         {
-            string path = "users.json";
-            if (!File.Exists(path))
-            {
-                File.Create(path);
-            }
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string text = reader.ReadToEnd();
-                if (text != "")
-                {
-                    List<User> listDes = JsonSerializer.Deserialize<List<User>>(text)!;
-                    if (listDes.Find(p => p.Username == username) != null)
-                        return true;
-                }
-            }
+            if (Users.Find(p => p.Username == username) != null)
+                return true;
             return false;
         }
         public List<User> getUsers()
         {
-            string path = "users.json";
             using (StreamReader reader = new StreamReader(path))
             {
                 string text = reader.ReadToEnd();
                 if (text != "")
                 {
-                    Users = JsonSerializer.Deserialize<List<User>>(text)!;
+                    return JsonSerializer.Deserialize<List<User>>(text)!;
                 }
             }
-            return Users;
+            return null!;
         }
     }
 }
