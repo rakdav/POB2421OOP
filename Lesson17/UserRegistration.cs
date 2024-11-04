@@ -21,13 +21,13 @@ namespace Lesson17
             {
                 File.Create(path);
             }
-            Users = getUsers();
+            getUsers();
         }
         public void RegisterUser(User newUser)
         {
             using (StreamReader reader = new StreamReader(path))
             {
-                if (Users.Find(p => p.Username != newUser.Username || p.Email != newUser.Email) == null)
+                if (Users.Find(p => p.Username == newUser.Username || p.Email == newUser.Email) == null)
                     Users.Add(newUser);
             }
         }
@@ -45,17 +45,16 @@ namespace Lesson17
                 return true;
             return false;
         }
-        public List<User> getUsers()
+        public void getUsers()
         {
             using (StreamReader reader = new StreamReader(path))
             {
                 string text = reader.ReadToEnd();
                 if (text != "")
                 {
-                    return JsonSerializer.Deserialize<List<User>>(text)!;
+                    Users = JsonSerializer.Deserialize<List<User>>(text)!;
                 }
             }
-            return null!;
         }
     }
 }

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
 
 namespace Lesson17
 {
@@ -17,7 +8,7 @@ namespace Lesson17
         public FormRegistration()
         {
             InitializeComponent();
-            userRegistration=new UserRegistration();
+            userRegistration = new UserRegistration();
         }
 
         private void textBoxPassword_TextChanged(object sender, EventArgs e)
@@ -56,12 +47,12 @@ namespace Lesson17
 
         private void buttonReg_Click(object sender, EventArgs e)
         {
-            if(userRegistration.ExistUser(textBoxPassword.Text))
+            if(userRegistration.ExistUser(textBoxLogin.Text))
             {
                 MessageBox.Show("Пользователь с таким логином существует!");
                 return;
             }
-            int id = userRegistration.getUsers().Count + 1;
+            int id = userRegistration.Users.Count + 1;
             User user = new User();
             user.Id=id;
             user.Username=textBoxLogin.Text;
@@ -72,8 +63,7 @@ namespace Lesson17
             user.RegistrationDate=DateTime.Now;
             user.BirthDate = dateTimePickerBirth.Value;
             userRegistration.RegisterUser(user);
-            userRegistration.SerializeUsersToJson(userRegistration.getUsers(),
-                "users.json");
+            userRegistration.SerializeUsersToJson(userRegistration.Users);
             this.Close();
         }
 
