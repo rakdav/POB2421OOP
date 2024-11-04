@@ -50,6 +50,7 @@
             buttonAdd.TabIndex = 1;
             buttonAdd.Text = "Добавить";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // buttonDel
             // 
@@ -70,6 +71,7 @@
             Controls.Add(listBoxArticles);
             Name = "FormAtricles";
             Text = "Статьи";
+            FormClosed += FormAtricles_FormClosed;
             ResumeLayout(false);
         }
 

@@ -12,6 +12,7 @@ namespace Lesson17
 {
     public partial class FormAtricles : Form
     {
+
         public FormAtricles()
         {
             InitializeComponent();
@@ -19,6 +20,20 @@ namespace Lesson17
             {
                 buttonAdd.Visible = false;
                 buttonDel.Visible = false;
+            }
+        }
+
+        private void FormAtricles_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormAutorization.instance!.Close();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            FormArticle formArticle = new FormArticle();
+            if(formArticle.ShowDialog()==DialogResult.OK)
+            {
+
             }
         }
     }

@@ -3,9 +3,11 @@ namespace Lesson17
     public partial class FormAutorization : Form
     {
         private UserAuthentification userAurization;
+        public static FormAutorization? instance;
         public FormAutorization()
         {
             InitializeComponent();
+            instance = this;
             userAurization = new UserAuthentification();
             AutoCompleteStringCollection source = new AutoCompleteStringCollection();
             if (userAurization.Users != null)
