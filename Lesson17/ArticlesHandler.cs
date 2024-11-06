@@ -23,5 +23,6 @@ namespace Lesson17
             articles!.Remove(article);
         }
         public List<Article> getArticles() => articles!;
+        public Article getArticle(int index) => articles![index];
     }
 }

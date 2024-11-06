@@ -16,7 +16,7 @@ namespace Lesson17
         public FormAtricles()
         {
             InitializeComponent();
-            handler=new ArticlesHandler();
+            handler = new ArticlesHandler();
             if (UserAuthentification.RegisterUser!.Role == "Читатель")
             {
                 buttonAdd.Visible = false;
@@ -32,20 +32,62 @@ namespace Lesson17
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             FormArticle formArticle = new FormArticle();
-            if(formArticle.ShowDialog()==DialogResult.OK)
+            if (formArticle.ShowDialog() == DialogResult.OK)
             {
                 Article article = new Article();
                 article.Theme = formArticle.textBoxTheme.Text;
                 article.Author = formArticle.textBoxAuthor.Text;
-                article.Age=(int)formArticle.numericUpDownAge.Value;
-                article.Title=formArticle.textBoxArticle.Text;
-                article.Content=formArticle.richTextBox1.Text;
+                article.Age = (int)formArticle.numericUpDownAge.Value;
+                article.Title = formArticle.textBoxArticle.Text;
+                article.Content = formArticle.richTextBox1.Text;
                 handler.Add(article);
-                listBoxArticles.Items.Clear();
-                List<Article> list = handler.getArticles();
-                for (int i = 0; i < list.Count; i++)
+                UpdateList();
+            }
+        }
+
+        private void buttonDel_Click(object sender, EventArgs e)
+        {
+            if (listBoxArticles.SelectedIndex != -1)
+            {
+                Article article = handler.getArticle(listBoxArticles.SelectedIndex);
+                handler.Remove(article);
+                UpdateList();
+            }
+        }
+        private void UpdateList()
+        {
+            listBoxArticles.Items.Clear();
+            List<Article> list = handler.getArticles();
+            for (int i = 0; i < list.Count; i++)
+            {
+                listBoxArticles.Items.Add(list[i].Title + " " + list[i].Author);
+            }
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (listBoxArticles.SelectedIndex != -1)
+            {
+                Article article = handler.
+                    getArticle(listBoxArticles.SelectedIndex);
+                FormArticle formArticle = new FormArticle();
+                formArticle.textBoxArticle.Text = article.Title;
+                formArticle.richTextBox1.Text = article.Content;
+                formArticle.textBoxAuthor.Text= article.Author;
+                formArticle.textBoxTheme.Text=article.Theme;
+                formArticle.numericUpDownAge.Value = article.Age;
+                if (formArticle.ShowDialog() == DialogResult.OK)
                 {
-                    listBoxArticles.Items.Add(list[i].Title+" " + list[i].Author);
+                    handler.getArticle(listBoxArticles.SelectedIndex).Age = 
+                        (int)formArticle.numericUpDownAge.Value;
+                    handler.getArticle(listBoxArticles.SelectedIndex).Theme = 
+                        formArticle.textBoxTheme.Text;
+                    handler.getArticle(listBoxArticles.SelectedIndex).Title =
+                        formArticle.textBoxArticle.Text;
+                    handler.getArticle(listBoxArticles.SelectedIndex).Content =
+                        formArticle.richTextBox1.Text;
+                    UpdateList();
+                    
                 }
             }
         }

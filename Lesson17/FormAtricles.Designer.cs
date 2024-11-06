@@ -31,6 +31,7 @@
             listBoxArticles = new ListBox();
             buttonAdd = new Button();
             buttonDel = new Button();
+            buttonEdit = new Button();
             SuspendLayout();
             // 
             // listBoxArticles
@@ -44,9 +45,9 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(201, 382);
+            buttonAdd.Location = new Point(88, 382);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(75, 23);
+            buttonAdd.Size = new Size(89, 23);
             buttonAdd.TabIndex = 1;
             buttonAdd.Text = "Добавить";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -54,18 +55,30 @@
             // 
             // buttonDel
             // 
-            buttonDel.Location = new Point(301, 382);
+            buttonDel.Location = new Point(287, 382);
             buttonDel.Name = "buttonDel";
-            buttonDel.Size = new Size(75, 23);
+            buttonDel.Size = new Size(89, 23);
             buttonDel.TabIndex = 2;
             buttonDel.Text = "Удалить";
             buttonDel.UseVisualStyleBackColor = true;
+            buttonDel.Click += buttonDel_Click;
+            // 
+            // buttonEdit
+            // 
+            buttonEdit.Location = new Point(183, 382);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(98, 23);
+            buttonEdit.TabIndex = 3;
+            buttonEdit.Text = "Редактировать";
+            buttonEdit.UseVisualStyleBackColor = true;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // FormAtricles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(395, 427);
+            Controls.Add(buttonEdit);
             Controls.Add(buttonDel);
             Controls.Add(buttonAdd);
             Controls.Add(listBoxArticles);
@@ -80,5 +93,6 @@
         private ListBox listBoxArticles;
         private Button buttonAdd;
         private Button buttonDel;
+        private Button buttonEdit;
     }
 }
