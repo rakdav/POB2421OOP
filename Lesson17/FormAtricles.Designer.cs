@@ -42,6 +42,7 @@
             listBoxArticles.Name = "listBoxArticles";
             listBoxArticles.Size = new Size(361, 349);
             listBoxArticles.TabIndex = 0;
+            listBoxArticles.DoubleClick += listBoxArticles_DoubleClick;
             // 
             // buttonAdd
             // 

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Lesson17
@@ -17,6 +19,12 @@ namespace Lesson17
         public void Add(Article article)
         {
             articles!.Add(article);
+            string path = "article.json";
+            using (StreamWriter writer = new StreamWriter(path, false))
+            {
+                string json = JsonSerializer.Serialize(article);
+                writer.WriteLine(json);
+            }
         }
         public void Remove(Article article)
         {
@@ -24,5 +32,14 @@ namespace Lesson17
         }
         public List<Article> getArticles() => articles!;
         public Article getArticle(int index) => articles![index];
+        public void ReadArticles()
+        {
+            string path = "article.json";
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string text = reader.ReadToEnd();
+                articles = JsonSerializer.Deserialize<List<Article>>(text);
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lesson17
 {
-    internal class Article
+    public class Article
     {
         public string? Theme { get; set; }
         public string? Title { get; set; }

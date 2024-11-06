@@ -73,22 +73,33 @@ namespace Lesson17
                 FormArticle formArticle = new FormArticle();
                 formArticle.textBoxArticle.Text = article.Title;
                 formArticle.richTextBox1.Text = article.Content;
-                formArticle.textBoxAuthor.Text= article.Author;
-                formArticle.textBoxTheme.Text=article.Theme;
+                formArticle.textBoxAuthor.Text = article.Author;
+                formArticle.textBoxTheme.Text = article.Theme;
                 formArticle.numericUpDownAge.Value = article.Age;
                 if (formArticle.ShowDialog() == DialogResult.OK)
                 {
-                    handler.getArticle(listBoxArticles.SelectedIndex).Age = 
+                    handler.getArticle(listBoxArticles.SelectedIndex).Age =
                         (int)formArticle.numericUpDownAge.Value;
-                    handler.getArticle(listBoxArticles.SelectedIndex).Theme = 
+                    handler.getArticle(listBoxArticles.SelectedIndex).Theme =
                         formArticle.textBoxTheme.Text;
                     handler.getArticle(listBoxArticles.SelectedIndex).Title =
                         formArticle.textBoxArticle.Text;
                     handler.getArticle(listBoxArticles.SelectedIndex).Content =
                         formArticle.richTextBox1.Text;
                     UpdateList();
-                    
+
                 }
+            }
+        }
+
+        private void listBoxArticles_DoubleClick(object sender, EventArgs e)
+        {
+            if(listBoxArticles.SelectedIndex != -1)
+            {
+                Article article=handler.
+                    getArticle(listBoxArticles.SelectedIndex);
+                FormReadArticle formReadArticle = new FormReadArticle(article);
+                formReadArticle.Show();
             }
         }
     }
