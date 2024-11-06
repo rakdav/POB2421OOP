@@ -112,6 +112,7 @@ namespace Lesson17
             UserAuthentification.ExitUesr();
             FormAutorization.instance!.Show();
             this.Close();
+
         }
     }
 }
