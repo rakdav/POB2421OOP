@@ -59,8 +59,8 @@ namespace Lesson17
             user.Username = textBoxLogin.Text;
             user.FirstName = textBoxFirstName.Text;
             user.SecondName = textBoxLastName.Text;
-            user.Email = textBoxEmail.Text;
-            user.Password = textBoxPassword.Text;
+            user.Email =textBoxEmail.Text;
+            user.Password = userRegistration.Hash(textBoxPassword.Text);
             user.RegistrationDate = DateTime.Now;
             user.BirthDate = dateTimePickerBirth.Value;
             user.Role = comboBoxRole.SelectedItem!.ToString();

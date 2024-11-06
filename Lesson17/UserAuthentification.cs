@@ -21,9 +21,9 @@ namespace Lesson17
 
         public bool AuthentificationUser(string username, string password)
         {
-            if (Users.Find(p => p.Username == username && p.Password == password) != null)
+            if (Users.Find(p => p.Username == username && p.Password == Hash(password)) != null)
             {
-                RegisterUser = Users.Find(p => p.Username == username && p.Password == password);
+                RegisterUser = Users.Find(p => p.Username == username && p.Password == Hash(password));
                 isAuth =true;
                 return true;
             }
@@ -43,6 +43,20 @@ namespace Lesson17
                     Users = JsonSerializer.Deserialize<List<User>>(text)!;
                 }
             }
+        }
+       
+        public static void ExitUesr()
+        {
+            RegisterUser=null;
+        }
+        public string Hash(string text)
+        {
+            string res = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                res += (int)(text[i] << 10);
+            }
+            return res;
         }
     }
 }

@@ -56,5 +56,14 @@ namespace Lesson17
                 }
             }
         }
+        public string Hash(string text)
+        {
+            string res = "";
+            for(int i = 0; i < text.Length; i++)
+            {
+                res += (int)(text[i]<<10);
+            }
+            return res;
+        }
     }
 }

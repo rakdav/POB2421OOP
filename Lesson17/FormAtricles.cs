@@ -21,12 +21,16 @@ namespace Lesson17
             {
                 buttonAdd.Visible = false;
                 buttonDel.Visible = false;
+                buttonEdit.Visible = false;
             }
+            handler.ReadArticles();
+            UpdateList();
         }
 
         private void FormAtricles_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FormAutorization.instance!.Close();
+            UserAuthentification.ExitUesr();
+            FormAutorization.instance!.Show();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -94,13 +98,20 @@ namespace Lesson17
 
         private void listBoxArticles_DoubleClick(object sender, EventArgs e)
         {
-            if(listBoxArticles.SelectedIndex != -1)
+            if (listBoxArticles.SelectedIndex != -1)
             {
-                Article article=handler.
+                Article article = handler.
                     getArticle(listBoxArticles.SelectedIndex);
                 FormReadArticle formReadArticle = new FormReadArticle(article);
                 formReadArticle.Show();
             }
+        }
+
+        private void linkLabelExit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            UserAuthentification.ExitUesr();
+            FormAutorization.instance!.Show();
+            this.Close();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Lesson17
             string path = "article.json";
             using (StreamWriter writer = new StreamWriter(path, false))
             {
-                string json = JsonSerializer.Serialize(article);
+                string json = JsonSerializer.Serialize(articles);
                 writer.WriteLine(json);
             }
         }
@@ -38,7 +38,8 @@ namespace Lesson17
             using (StreamReader reader = new StreamReader(path))
             {
                 string text = reader.ReadToEnd();
-                articles = JsonSerializer.Deserialize<List<Article>>(text);
+                if(text!="")
+                    articles = JsonSerializer.Deserialize<List<Article>>(text);
             }
         }
     }

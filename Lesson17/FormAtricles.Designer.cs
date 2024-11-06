@@ -32,13 +32,14 @@
             buttonAdd = new Button();
             buttonDel = new Button();
             buttonEdit = new Button();
+            linkLabelExit = new LinkLabel();
             SuspendLayout();
             // 
             // listBoxArticles
             // 
             listBoxArticles.FormattingEnabled = true;
             listBoxArticles.ItemHeight = 15;
-            listBoxArticles.Location = new Point(15, 12);
+            listBoxArticles.Location = new Point(15, 27);
             listBoxArticles.Name = "listBoxArticles";
             listBoxArticles.Size = new Size(361, 349);
             listBoxArticles.TabIndex = 0;
@@ -46,7 +47,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(88, 382);
+            buttonAdd.Location = new Point(88, 392);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(89, 23);
             buttonAdd.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             // buttonDel
             // 
-            buttonDel.Location = new Point(287, 382);
+            buttonDel.Location = new Point(287, 392);
             buttonDel.Name = "buttonDel";
             buttonDel.Size = new Size(89, 23);
             buttonDel.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // buttonEdit
             // 
-            buttonEdit.Location = new Point(183, 382);
+            buttonEdit.Location = new Point(183, 392);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(98, 23);
             buttonEdit.TabIndex = 3;
@@ -74,11 +75,23 @@
             buttonEdit.UseVisualStyleBackColor = true;
             buttonEdit.Click += buttonEdit_Click;
             // 
+            // linkLabelExit
+            // 
+            linkLabelExit.AutoSize = true;
+            linkLabelExit.Location = new Point(316, 9);
+            linkLabelExit.Name = "linkLabelExit";
+            linkLabelExit.Size = new Size(42, 15);
+            linkLabelExit.TabIndex = 4;
+            linkLabelExit.TabStop = true;
+            linkLabelExit.Text = "Выход";
+            linkLabelExit.LinkClicked += linkLabelExit_LinkClicked;
+            // 
             // FormAtricles
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(395, 427);
+            Controls.Add(linkLabelExit);
             Controls.Add(buttonEdit);
             Controls.Add(buttonDel);
             Controls.Add(buttonAdd);
@@ -87,6 +100,7 @@
             Text = "Статьи";
             FormClosed += FormAtricles_FormClosed;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -95,5 +109,6 @@
         private Button buttonAdd;
         private Button buttonDel;
         private Button buttonEdit;
+        private LinkLabel linkLabelExit;
     }
 }
