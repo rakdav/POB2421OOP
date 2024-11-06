@@ -94,7 +94,7 @@
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(75, 23);
             buttonCancel.TabIndex = 6;
-            buttonCancel.Text = "button1";
+            buttonCancel.Text = "Отмена";
             buttonCancel.UseVisualStyleBackColor = true;
             // 
             // FormArticle
@@ -117,13 +117,12 @@
         }
 
         #endregion
-
-        private TextBox textBoxTheme;
-        private TextBox textBoxArticle;
-        private NumericUpDown numericUpDownAge;
-        private TextBox textBoxAuthor;
-        private RichTextBox richTextBox1;
         private Button buttonSave;
         private Button buttonCancel;
+        public TextBox textBoxTheme;
+        public TextBox textBoxArticle;
+        public NumericUpDown numericUpDownAge;
+        public TextBox textBoxAuthor;
+        public RichTextBox richTextBox1;
     }
 }
