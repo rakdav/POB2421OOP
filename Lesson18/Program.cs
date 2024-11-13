@@ -1,14 +1,14 @@
-﻿//Thread thread = Thread.CurrentThread;
-//thread.Name = "Main";
-//Console.WriteLine(thread.Name);
-//Console.WriteLine(thread.ExecutionContext);
-//Console.WriteLine(thread.IsAlive);
-//Console.WriteLine(thread.IsBackground);
-//Console.WriteLine(thread.ManagedThreadId);
-//Console.WriteLine(thread.Priority);
-//thread.Priority = ThreadPriority.Highest;
-//Console.WriteLine(thread.Priority);
-//Console.WriteLine(thread.ThreadState);
+﻿Thread thread = Thread.CurrentThread;
+thread.Name = "Main";
+Console.WriteLine(thread.Name);
+Console.WriteLine(thread.ExecutionContext);
+Console.WriteLine(thread.IsAlive);
+Console.WriteLine(thread.IsBackground);
+Console.WriteLine(thread.ManagedThreadId);
+Console.WriteLine(thread.Priority);
+thread.Priority = ThreadPriority.Highest;
+Console.WriteLine(thread.Priority);
+Console.WriteLine(thread.ThreadState);
 
 //Console.WriteLine(Thread.GetDomain());
 //Console.WriteLine(Thread.GetDomainID());
@@ -21,7 +21,6 @@
 //thread.Join();
 //thread.Start();
 
-using System.Threading.Channels;
 
 Thread myThread1 = new Thread(Print1);
 Thread myThread2 = new Thread(new ThreadStart(Print2));

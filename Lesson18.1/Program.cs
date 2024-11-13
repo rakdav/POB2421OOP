@@ -9,6 +9,7 @@
 //    myThread.Name = $"Поток {i}";
 //    myThread.Start();
 //}
+//Console.WriteLine("Итого"+x);
 
 //void Print()
 //{
@@ -33,7 +34,7 @@
 //    myThread.Name = $"Поток {i}";
 //    myThread.Start();
 //}
-
+//Console.WriteLine("Итого"+x);
 //void Print()
 //{
 //    bool acquireLock = false;
@@ -57,7 +58,7 @@
 //класс AutoResetEvent
 
 //int x = 100;
-//AutoResetEvent waitHandler= new AutoResetEvent(true);
+//AutoResetEvent waitHandler = new AutoResetEvent(true);
 //for (int i = 0; i < 6; i++)
 //{
 //    Thread myThread = new Thread(Print);
@@ -68,13 +69,13 @@
 //void Print()
 //{
 //    waitHandler.WaitOne();
-//        //x = 1;
-//        for (int i = 0; i < 6; i++)
-//        {
-//            Console.WriteLine($"{Thread.CurrentThread.Name}:{x}");
-//            x--;
-//            Thread.Sleep(100);
-//        }
+//    x = 1;
+//    for (int i = 0; i < 6; i++)
+//    {
+//        Console.WriteLine($"{Thread.CurrentThread.Name}:{x}");
+//        x--;
+//        Thread.Sleep(100);
+//    }
 //    waitHandler.Set();
 //}
 
@@ -90,13 +91,13 @@
 //void Print()
 //{
 //    mutexObj.WaitOne();
-//        //x = 1;
-//        for (int i = 0; i < 6; i++)
-//        {
-//            Console.WriteLine($"{Thread.CurrentThread.Name}:{x}");
-//            x--;
-//            Thread.Sleep(100);
-//        }
+//    //x = 1;
+//    for (int i = 0; i < 6; i++)
+//    {
+//        Console.WriteLine($"{Thread.CurrentThread.Name}:{x}");
+//        x--;
+//        Thread.Sleep(100);
+//    }
 //    mutexObj.ReleaseMutex();
 //}
 
@@ -119,7 +120,7 @@ class Reader
     }
     public void Read()
     {
-        while (count>0) 
+        while (count > 0)
         {
             sem.WaitOne();
             Console.WriteLine($"Входит {Thread.CurrentThread.Name}");
