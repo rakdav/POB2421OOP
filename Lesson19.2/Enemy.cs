@@ -9,6 +9,7 @@ namespace Lesson19._2
 {
     internal class Enemy
     {
+        private PictureBox pictureBox;
         private Image image;
         public int X {  get; set; }
         public int Y { get; set; }

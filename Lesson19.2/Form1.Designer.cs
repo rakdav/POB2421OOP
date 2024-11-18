@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pictureBoxPlayer = new PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBoxPlayer).BeginInit();
             SuspendLayout();
             // 
@@ -41,6 +43,10 @@
             pictureBoxPlayer.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxPlayer.TabIndex = 0;
             pictureBoxPlayer.TabStop = false;
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
             // 
             // FormGame
             // 
@@ -59,5 +65,6 @@
         #endregion
 
         private PictureBox pictureBoxPlayer;
+        private System.Windows.Forms.Timer timer1;
     }
 }
