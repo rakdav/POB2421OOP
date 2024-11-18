@@ -85,18 +85,66 @@ long Fact(int n)
 //Task<int> sumTask = new Task<int>(() => Sum(n1, n2));
 //sumTask.Start();
 //Console.WriteLine($"{n1}+{n2}={sumTask.Result}");
-Random random = new Random();
-Task<long>[] tasks = new Task<long>[5];
+//Random random = new Random();
+//Task<long>[] tasks = new Task<long>[5];
 //for (int i = 0; i < tasks.Length; i++)
 //{
 //    tasks[i] = new Task<long>(
 //        () => Fact(random.Next(10,20)));
 //    tasks[i].Start();
 //}
-for (int i = 0; i < tasks.Length; i++)
+//for (int i = 0; i < tasks.Length; i++)
+//{
+//    tasks[i] = new Task<long>(() => random.Next(100, 10000));
+//    tasks[i].Start();
+//}
+//for (int i = 0; i < tasks.Length; i++)
+//Console.WriteLine(tasks[i].Result);
+
+//Задачи продолжения
+void PrintTask(Task t)
 {
-    tasks[i] = new Task<long>(() => random.Next(100, 10000));
-    tasks[i].Start();
+    Console.WriteLine($"Id задачи:{Task.CurrentId}");
+    Console.WriteLine($"Id предущая задача:{t.Id}");
+    Thread.Sleep(1000);
 }
-for (int i = 0; i < tasks.Length; i++)
-Console.WriteLine(tasks[i].Result);
+//Task task1=new Task(() =>
+//{
+//    Console.WriteLine($"Id задачи:{Task.CurrentId}");
+//});
+//Task task2 = task1.ContinueWith(PrintTask);
+//task1.Start();
+//task2.Wait();
+//void PrintResult(int sum) => Console.WriteLine($"Sum:{sum}");
+//Task<int> sumTask = new Task<int>(()=>Sum(4,5));
+//Task printTask = sumTask.ContinueWith(t => PrintResult(t.Result));
+//sumTask.Start();
+//printTask.Wait();
+
+//Parallel.Invoke
+//Parallel.Invoke(Print,
+//    () =>
+//    {
+//        Console.WriteLine($"Выполняется задача {Task.CurrentId}");
+//        Thread.Sleep(3000);
+//    },
+//    ()=>Square(10));
+//void Print()
+//{
+//    Console.WriteLine($"Выполняется задача {Task.CurrentId}");
+//    Thread.Sleep(3000);
+//}
+void Square(int n,ParallelLoopState pls)
+{
+    if (n == 8) pls.Break();
+    Console.WriteLine($"Выполняется задача {Task.CurrentId}");
+    Thread.Sleep(3000);
+    Console.WriteLine($"Результат:{n * n}");
+}
+//Parallel.For
+//Parallel.For(1, 5, Square);
+
+//Parallel.ForEach
+ParallelLoopResult result = Parallel.ForEach<int>(
+    new List<int>() { 1, 5, 8, 3 }, Square);
+if(!result.IsCompleted) Console.WriteLine(result.LowestBreakIteration);
