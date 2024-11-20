@@ -33,6 +33,7 @@
             button2 = new Button();
             pictureBox1 = new PictureBox();
             button3 = new Button();
+            folderBrowserDialog1 = new FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             button1.TabIndex = 1;
             button1.Text = "Открыть";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -62,6 +64,7 @@
             button2.TabIndex = 2;
             button2.Text = "Запуск";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // pictureBox1
             // 
@@ -79,6 +82,7 @@
             button3.TabIndex = 4;
             button3.Text = "Отмена";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Form1
             // 
@@ -104,5 +108,6 @@
         private Button button2;
         private PictureBox pictureBox1;
         private Button button3;
+        private FolderBrowserDialog folderBrowserDialog1;
     }
 }
