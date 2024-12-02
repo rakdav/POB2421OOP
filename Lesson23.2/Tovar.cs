@@ -14,7 +14,7 @@ namespace Lesson23._2
         public decimal Total { get; set; }
         public decimal Price { get; set; }
         public decimal Remainder { get; set; }
-        public DateTime? Start { get; set; }
+        public DateTime Start { get; set; }
         public void Print()
         {
             Console.WriteLine(Name +" "+Count+" "+CostPrice+" "+

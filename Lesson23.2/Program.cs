@@ -67,7 +67,7 @@ do
                 worksheet.Cells[currentRow, 4].Value = tovar.Total;
                 worksheet.Cells[currentRow, 5].Value = tovar.Price;
                 worksheet.Cells[currentRow, 6].Value = tovar.Remainder;
-                worksheet.Cells[currentRow, 7].Value = tovar.Start;
+                worksheet.Cells[currentRow, 7].Value = tovar.Start.ToShortDateString();
                 package.Save();
                 currentRow++;
             } 
@@ -82,13 +82,18 @@ do
                 {
                     if(worksheet.Cells[row, 1].Value.ToString() == name)
                     {
-                        if(count<int.Parse(worksheet.Cells[row, 2].
+                        if (count < int.Parse(worksheet.Cells[row, 2].
                             Value.ToString()!))
                         {
                             int nCount = int.Parse(worksheet.Cells[row, 2].
-                            Value.ToString()!) -count;
+                            Value.ToString()!) - count;
                             worksheet.Cells[row, 2].Value = nCount;
                             package.Save();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Такого количества на складе нет!");
+                            Console.ReadKey();
                         }
                     }
                 }
