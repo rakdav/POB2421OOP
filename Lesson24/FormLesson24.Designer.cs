@@ -28,25 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dataGridViewUser = new DataGridView();
+            UserName = new DataGridViewTextBoxColumn();
+            UserLastName = new DataGridViewTextBoxColumn();
+            UserAge = new DataGridViewTextBoxColumn();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            удалитьToolStripMenuItem = new ToolStripMenuItem();
             textBoxFirstName = new TextBox();
             textBoxLastName = new TextBox();
             textBoxAge = new TextBox();
             buttonAdd = new Button();
-            UserName = new DataGridViewTextBoxColumn();
-            UserLastName = new DataGridViewTextBoxColumn();
-            UserAge = new DataGridViewTextBoxColumn();
+            buttonEdit = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewUser).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewUser
             // 
             dataGridViewUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewUser.Columns.AddRange(new DataGridViewColumn[] { UserName, UserLastName, UserAge });
+            dataGridViewUser.ContextMenuStrip = contextMenuStrip1;
             dataGridViewUser.Location = new Point(8, 8);
             dataGridViewUser.Name = "dataGridViewUser";
             dataGridViewUser.Size = new Size(673, 465);
             dataGridViewUser.TabIndex = 0;
+            dataGridViewUser.CellClick += dataGridViewUser_CellClick;
+            dataGridViewUser.KeyDown += dataGridViewUser_KeyDown;
+            // 
+            // UserName
+            // 
+            UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UserName.HeaderText = "Имя";
+            UserName.Name = "UserName";
+            UserName.ReadOnly = true;
+            // 
+            // UserLastName
+            // 
+            UserLastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UserLastName.HeaderText = "Фамилия";
+            UserLastName.Name = "UserLastName";
+            UserLastName.ReadOnly = true;
+            // 
+            // UserAge
+            // 
+            UserAge.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            UserAge.HeaderText = "Возраст";
+            UserAge.Name = "UserAge";
+            UserAge.ReadOnly = true;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { удалитьToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(119, 26);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            удалитьToolStripMenuItem.Size = new Size(118, 22);
+            удалитьToolStripMenuItem.Text = "Удалить";
+            удалитьToolStripMenuItem.Click += удалитьToolStripMenuItem_Click;
             // 
             // textBoxFirstName
             // 
@@ -82,32 +124,23 @@
             buttonAdd.UseVisualStyleBackColor = true;
             buttonAdd.Click += buttonAdd_Click;
             // 
-            // UserName
+            // buttonEdit
             // 
-            UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            UserName.HeaderText = "Имя";
-            UserName.Name = "UserName";
-            UserName.ReadOnly = true;
-            // 
-            // UserLastName
-            // 
-            UserLastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            UserLastName.HeaderText = "Фамилия";
-            UserLastName.Name = "UserLastName";
-            UserLastName.ReadOnly = true;
-            // 
-            // UserAge
-            // 
-            UserAge.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            UserAge.HeaderText = "Возраст";
-            UserAge.Name = "UserAge";
-            UserAge.ReadOnly = true;
+            buttonEdit.Enabled = false;
+            buttonEdit.Location = new Point(793, 231);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(139, 46);
+            buttonEdit.TabIndex = 5;
+            buttonEdit.Text = "Изменить";
+            buttonEdit.UseVisualStyleBackColor = true;
+            buttonEdit.Click += buttonEdit_Click;
             // 
             // FormLesson24
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(944, 480);
+            Controls.Add(buttonEdit);
             Controls.Add(buttonAdd);
             Controls.Add(textBoxAge);
             Controls.Add(textBoxLastName);
@@ -118,6 +151,7 @@
             Name = "FormLesson24";
             Text = "Урок 24";
             ((System.ComponentModel.ISupportInitialize)dataGridViewUser).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -132,5 +166,8 @@
         private DataGridViewTextBoxColumn UserName;
         private DataGridViewTextBoxColumn UserLastName;
         private DataGridViewTextBoxColumn UserAge;
+        private Button buttonEdit;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem удалитьToolStripMenuItem;
     }
 }
