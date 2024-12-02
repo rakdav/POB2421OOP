@@ -80,24 +80,28 @@
             buttonAdd.TabIndex = 4;
             buttonAdd.Text = "Добавить";
             buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // UserName
             // 
             UserName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             UserName.HeaderText = "Имя";
             UserName.Name = "UserName";
+            UserName.ReadOnly = true;
             // 
             // UserLastName
             // 
             UserLastName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             UserLastName.HeaderText = "Фамилия";
             UserLastName.Name = "UserLastName";
+            UserLastName.ReadOnly = true;
             // 
             // UserAge
             // 
             UserAge.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             UserAge.HeaderText = "Возраст";
             UserAge.Name = "UserAge";
+            UserAge.ReadOnly = true;
             // 
             // FormLesson24
             // 
