@@ -1,6 +1,7 @@
 using CsvHelper.Configuration;
 using CsvHelper;
 using System.Globalization;
+using System.Data;
 
 namespace Lesson25._3
 {
@@ -14,6 +15,7 @@ namespace Lesson25._3
             CsvReader csvReader = new CsvReader(reader,
                 new CsvConfiguration(CultureInfo.InvariantCulture));
             records = csvReader.GetRecords<Inventory>().ToList();
+            dataGridViewInentors.DataSource = records;
             reader.Close();
             UpdateForm(records);
             comboBoxFilter.SelectedIndex = 0;
@@ -29,7 +31,7 @@ namespace Lesson25._3
                 dataGridViewInentors.Columns[i].ReadOnly = true;
             }
             toolStripStatusLabelCount.Text = "Количество записей:"
-                + records.Count.ToString();
+                + list.Count.ToString();
         }
         private void dataGridViewInentors_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -99,7 +101,7 @@ namespace Lesson25._3
                     case 0:
                         {
                             List<Inventory> list = records.
-                                Where(p => p.Name!.StartsWith(textBoxSearch.Text)).ToList();
+                                Where(p => p.Name!.ToLower().StartsWith(textBoxSearch.Text.ToLower())).ToList();
                             UpdateForm(list);
                         }
                         break;
