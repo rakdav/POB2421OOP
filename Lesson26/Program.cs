@@ -3,18 +3,18 @@ using System.Xml.Serialization;
 Product product1 = new Product()
 {
     Name = "Хлеб",
-    Category="Белый",
-    Period=8,
-    Manufactorer="Хлебпром",
-    Price=40
+    Category = "Белый",
+    Period = 8,
+    Manufactorer = "Хлебпром",
+    Price = 40
 };
 Product product2 = new Product()
 {
-    Name="Молоко",
-    Category="15%",
-    Period=5,
-    Manufactorer="Молокозавод",
-    Price=39
+    Name = "Молоко",
+    Category = "15%",
+    Period = 5,
+    Manufactorer = "Молокозавод",
+    Price = 39
 };
 Product product3 = new Product()
 {
@@ -28,9 +28,27 @@ List<Product> products = new List<Product>();
 products.Add(product1);
 products.Add(product2);
 products.Add(product3);
-XmlSerializer xmlSerializer = 
+XmlSerializer xmlSerializer =
     new XmlSerializer(typeof(List<Product>));
-FileStream stream = new FileStream("products.xml",
-    FileMode.Create);
-xmlSerializer.Serialize(stream, products);
-stream.Close();
+//FileStream stream = new FileStream("products.xml",
+//    FileMode.Create);
+//xmlSerializer.Serialize(stream, products);
+//stream.Close();
+using (FileStream stream = new FileStream("products.xml",
+    FileMode.Create))
+{
+    xmlSerializer.Serialize(stream, products);
+}
+
+//XmlSerializer xmlSerializer =
+//        new XmlSerializer(typeof(List<Product>));
+//using (FileStream stream = new FileStream("products.xml",
+//        FileMode.Open))
+//{
+//    List<Product> products = (List<Product>)xmlSerializer.
+//        Deserialize(stream)!;
+//    foreach (Product product in products)
+//    {
+//        Console.WriteLine(product);
+//    }
+//}
