@@ -15,18 +15,21 @@ namespace Lesson25._3
                 new CsvConfiguration(CultureInfo.InvariantCulture));
             records = csvReader.GetRecords<Inventory>().ToList();
             reader.Close();
-            UpdateForm();
+            UpdateForm(records);
+            comboBoxFilter.SelectedIndex = 0;
         }
-        private void UpdateForm()
+        private void UpdateForm(List<Inventory> list)
         {
             dataGridViewInentors.DataSource = null;
-            dataGridViewInentors.DataSource = records;
+            dataGridViewInentors.DataSource = list;
             for (int i = 0; i < dataGridViewInentors.Columns.Count; i++)
             {
                 dataGridViewInentors.Columns[i].AutoSizeMode =
                     DataGridViewAutoSizeColumnMode.Fill;
                 dataGridViewInentors.Columns[i].ReadOnly = true;
             }
+            toolStripStatusLabelCount.Text = "Êîëè÷åñòâî çàïèñåé:"
+                + records.Count.ToString();
         }
         private void dataGridViewInentors_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -48,7 +51,7 @@ namespace Lesson25._3
             inventory.Price = decimal.Parse(textBoxPrice.Text);
             inventory.Description = textBoxDesc.Text;
             records.Add(inventory);
-            UpdateForm();
+            UpdateForm(records);
         }
 
         private void ñîõðàíToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,7 +73,7 @@ namespace Lesson25._3
                 records[index].Name = textBoxName.Text;
                 records[index].Price = decimal.Parse(textBoxPrice.Text);
                 records[index].Description = textBoxDesc.Text;
-                UpdateForm();
+                UpdateForm(records);
             }
         }
 
@@ -82,9 +85,41 @@ namespace Lesson25._3
                 {
                     int index = dataGridViewInentors.SelectedRows[0].Index;
                     records.RemoveAt(index);
-                    UpdateForm();
+                    UpdateForm(records);
                 }
             }
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxSearch.Text.Length != 0)
+            {
+                switch (comboBoxFilter.SelectedIndex)
+                {
+                    case 0:
+                        {
+                            List<Inventory> list = records.
+                                Where(p => p.Name!.StartsWith(textBoxSearch.Text)).ToList();
+                            UpdateForm(list);
+                        }
+                        break;
+                    case 1:
+                        {
+                            List<Inventory> list = records.
+                                Where(p => p.Quantity==int.Parse(textBoxSearch.Text)).ToList();
+                            UpdateForm(list);
+                        }
+                        break;
+                    case 2:
+                        {
+                            List<Inventory> list = records.
+                                Where(p => p.Price == int.Parse(textBoxSearch.Text)).ToList();
+                            UpdateForm(list);
+                        }
+                        break;
+                }
+            }
+            else UpdateForm(records);
         }
     }
 }

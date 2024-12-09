@@ -30,6 +30,7 @@
         {
             dataGridViewInentors = new DataGridView();
             statusStrip1 = new StatusStrip();
+            toolStripStatusLabelCount = new ToolStripStatusLabel();
             textBoxName = new TextBox();
             textBoxCount = new TextBox();
             textBoxPrice = new TextBox();
@@ -41,27 +42,37 @@
             выходToolStripMenuItem = new ToolStripMenuItem();
             buttonAdd = new Button();
             buttonEdit = new Button();
+            textBoxSearch = new TextBox();
+            comboBoxFilter = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInentors).BeginInit();
+            statusStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewInentors
             // 
             dataGridViewInentors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewInentors.Location = new Point(12, 31);
+            dataGridViewInentors.Location = new Point(12, 70);
             dataGridViewInentors.Name = "dataGridViewInentors";
-            dataGridViewInentors.Size = new Size(607, 495);
+            dataGridViewInentors.Size = new Size(607, 456);
             dataGridViewInentors.TabIndex = 0;
             dataGridViewInentors.CellClick += dataGridViewInentors_CellClick;
             dataGridViewInentors.KeyDown += dataGridViewInentors_KeyDown;
             // 
             // statusStrip1
             // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelCount });
             statusStrip1.Location = new Point(0, 539);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(984, 22);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelCount
+            // 
+            toolStripStatusLabelCount.Name = "toolStripStatusLabelCount";
+            toolStripStatusLabelCount.Size = new Size(118, 17);
+            toolStripStatusLabelCount.Text = "toolStripStatusLabel1";
             // 
             // textBoxName
             // 
@@ -150,11 +161,31 @@
             buttonEdit.UseVisualStyleBackColor = true;
             buttonEdit.Click += button1_Click;
             // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(12, 31);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.PlaceholderText = "Введите строку для поиска";
+            textBoxSearch.Size = new Size(364, 33);
+            textBoxSearch.TabIndex = 9;
+            textBoxSearch.TextChanged += textBoxSearch_TextChanged;
+            // 
+            // comboBoxFilter
+            // 
+            comboBoxFilter.FormattingEnabled = true;
+            comboBoxFilter.Items.AddRange(new object[] { "Название", "Количество", "Цена" });
+            comboBoxFilter.Location = new Point(397, 31);
+            comboBoxFilter.Name = "comboBoxFilter";
+            comboBoxFilter.Size = new Size(222, 33);
+            comboBoxFilter.TabIndex = 10;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 561);
+            Controls.Add(comboBoxFilter);
+            Controls.Add(textBoxSearch);
             Controls.Add(buttonEdit);
             Controls.Add(buttonAdd);
             Controls.Add(textBoxDesc);
@@ -170,6 +201,8 @@
             Name = "Form1";
             Text = "Урок 25";
             ((System.ComponentModel.ISupportInitialize)dataGridViewInentors).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -191,5 +224,8 @@
         private ToolStripMenuItem выходToolStripMenuItem;
         private Button buttonAdd;
         private Button buttonEdit;
+        private ToolStripStatusLabel toolStripStatusLabelCount;
+        private TextBox textBoxSearch;
+        private ComboBox comboBoxFilter;
     }
 }
