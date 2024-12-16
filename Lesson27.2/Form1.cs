@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+using Font = System.Drawing.Font;
 using Word = Microsoft.Office.Interop.Word;
 namespace Lesson27._2
 {
@@ -7,7 +7,7 @@ namespace Lesson27._2
         private OpenFileDialog openFile;
         private FontStyle fontStyle;
         private FontFamily fontFamily;
-        private int size;
+        private float size;
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +34,9 @@ namespace Lesson27._2
                 richTextBoxText.Text = str;
                 richTextBoxText.SelectAll();
                 richTextBoxText.SelectionFont =
-                    new Font(fontFamily, size, fontStyle);
+                    new Font(  fontFamily, size, fontStyle);
+                textBoxFont.Text = fontFamily.Name;
+                numericUpDownSize.Value = decimal.Parse(size.ToString());
                 wordDoc.Close();
                 wordApp.Quit();
             }
@@ -47,7 +49,7 @@ namespace Lesson27._2
                 if (checkBoxBold.Checked)
                 {
                     richTextBoxText.SelectionFont =
-                        new Font("Verdana", 12, FontStyle.Bold);
+                        new System.Drawing.Font("Verdana", 12, FontStyle.Bold);
                 }
                 else
                 {
@@ -66,6 +68,10 @@ namespace Lesson27._2
                 richTextBoxText.SelectionFont =
                         new Font(fontDialog.Font.FontFamily,
                         fontDialog.Font.Size, fontDialog.Font.Style);
+                fontFamily = fontDialog.Font.FontFamily;
+                fontStyle = fontDialog.Font.Style;
+                size = fontDialog.Font.Size;
+                numericUpDownSize.Value = decimal.Parse(size.ToString());
             }
         }
 
@@ -80,7 +86,40 @@ namespace Lesson27._2
 
         private void ÒÓı‡ÌËÚ¸ ‡ÍToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Word files(*.rtf)|*.rtf|All files(*.*)|*.*";
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Word.Application wordApp = new Word.Application();
+                Word.Document wordDoc = wordApp.Documents.Open(saveFileDialog.FileName);
+                wordDoc.Content.Delete();
+                string res=richTextBoxText.Text;
+                string[] mas = res.Split("\n");
+                for(int i=0;i<mas.Length;i++)
+                {
+                    Word.Paragraph heading = wordDoc.Paragraphs.Add();
+                    heading.Range.Text += mas[i];
+                }
+                Word.Range range = wordDoc.Content;
+                range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphJustify;
+                wordDoc.SaveAs2(saveFileDialog.FileName,Word.WdSaveFormat.wdFormatRTF);
+                wordDoc.Close();
+                wordApp.Quit();
+            }
         }
+
+        private void numericUpDownSize_ValueChanged(object sender, EventArgs e)
+        {
+            richTextBoxText.SelectionFont =
+                        new Font(fontFamily,
+                        (float)numericUpDownSize.Value, fontStyle);
+        }
+
+        private void toolStripButtonJustify_Click(object sender, EventArgs e)
+        {
+            richTextBoxText.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
     }
 }
+
