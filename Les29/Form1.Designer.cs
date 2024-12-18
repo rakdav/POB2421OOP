@@ -33,9 +33,9 @@
             открытьToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             выходToolStripMenuItem = new ToolStripMenuItem();
-            dataGridView1 = new DataGridView();
+            dataGridViewTovar = new DataGridView();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTovar).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -57,42 +57,42 @@
             // открытьToolStripMenuItem
             // 
             открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.Size = new Size(180, 22);
+            открытьToolStripMenuItem.Size = new Size(133, 22);
             открытьToolStripMenuItem.Text = "Открыть ...";
             открытьToolStripMenuItem.Click += открытьToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(130, 6);
             // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(180, 22);
+            выходToolStripMenuItem.Size = new Size(133, 22);
             выходToolStripMenuItem.Text = "Выход";
             // 
-            // dataGridView1
+            // dataGridViewTovar
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 27);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(776, 411);
-            dataGridView1.TabIndex = 1;
+            dataGridViewTovar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTovar.Location = new Point(12, 27);
+            dataGridViewTovar.Name = "dataGridViewTovar";
+            dataGridViewTovar.Size = new Size(776, 411);
+            dataGridViewTovar.TabIndex = 1;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewTovar);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Товарная накладная";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTovar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -104,6 +104,6 @@
         private ToolStripMenuItem открытьToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem выходToolStripMenuItem;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewTovar;
     }
 }

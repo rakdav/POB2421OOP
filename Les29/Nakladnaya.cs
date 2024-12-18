@@ -12,14 +12,14 @@ namespace Les29
         [DisplayName("Название товара")]
         public string? Name {  get; set; }
         [DisplayName("Количество")]
-        public int Quantity { get;set; }
-        [DisplayName("Цена")]
-        public decimal Price {  get; set; }
-        [DisplayName("Постащик")]
+        public string? Quantity { get;set; }
+       [DisplayName("Стоимость")]
+        public string? Price {  get; set; }
+        [DisplayName("ФИО поставщика")]
         public string? Provider { get; set; }
-        [DisplayName("Получатель")]
+        [DisplayName("ФИО получателя")]
         public string? Recipient { get; set; }
         [DisplayName("Дата поставки")]
-        public DateOnly DateOrder { get; set; }
+        public string? DateOrder { get; set; }
     }
 }
