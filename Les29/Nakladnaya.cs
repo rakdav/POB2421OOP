@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Les29
 {
-    internal class Nakladnaya
+    internal class Nakladnaya:IComparable
     {
         [DisplayName("Название товара")]
         public string? Name {  get; set; }
@@ -21,5 +21,11 @@ namespace Les29
         public string? Recipient { get; set; }
         [DisplayName("Дата поставки")]
         public string? DateOrder { get; set; }
+
+        public int CompareTo(object? obj)
+        {
+            if(obj is Nakladnaya nak) return Name!.CompareTo(nak.Name);
+            else throw new ArgumentException("Некорректное значение параметра");
+        }
     }
 }

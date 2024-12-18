@@ -29,6 +29,7 @@ namespace Les29
                 records = csvReader.GetRecords<Nakladnaya>().ToList();
                 reader.Close();
                 records.RemoveAt(0);
+                records.Sort();
                 UpdateForm(records);
             }
         }
