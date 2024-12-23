@@ -89,16 +89,50 @@ namespace Les29
             {
                 case 0: 
                     { 
-                        
                         if (direction == ListSortDirection.Ascending)
-                        {
                             temp = records.OrderBy(p => p.Name).ToList();
-                        }
                         else
-                        {
                             temp = records.OrderByDescending(p => p.Name).ToList();
-                        }
-
+                    }
+                    break;
+                case 1:
+                    {
+                        if (direction == ListSortDirection.Ascending)
+                            temp = records.OrderBy(p => p.Quantity).ToList();
+                        else
+                            temp = records.OrderByDescending(p => p.Quantity).ToList();
+                    }
+                    break;
+                case 2:
+                    {
+                        if (direction == ListSortDirection.Ascending)
+                            temp = records.OrderBy(p => p.Price).ToList();
+                        else
+                            temp = records.OrderByDescending(p => p.Price).ToList();
+                    }
+                    break;
+                case 3:
+                    {
+                        if (direction == ListSortDirection.Ascending)
+                            temp = records.OrderBy(p => p.Provider).ToList();
+                        else
+                            temp = records.OrderByDescending(p => p.Provider).ToList();
+                    }
+                    break;
+                case 4:
+                    {
+                        if (direction == ListSortDirection.Ascending)
+                            temp = records.OrderBy(p => p.Recipient).ToList();
+                        else
+                            temp = records.OrderByDescending(p => p.Recipient).ToList();
+                    }
+                    break;
+                case 5:
+                    {
+                        if (direction == ListSortDirection.Ascending)
+                            temp = records.OrderBy(p => p.DateOrder).ToList();
+                        else
+                            temp = records.OrderByDescending(p => p.DateOrder).ToList();
                     }
                     break;
             }
