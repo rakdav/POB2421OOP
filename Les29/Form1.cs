@@ -5,7 +5,7 @@ using OfficeOpenXml.Drawing.Chart;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
-
+using Word = Microsoft.Office.Interop.Word;
 namespace Les29
 {
     public partial class Form1 : Form
@@ -35,6 +35,16 @@ namespace Les29
                 reader.Close();
                 records.RemoveAt(0);
                 records.Sort();
+                records = records.GroupBy(d => new { d.Name, d.Provider, d.Recipient, d.DateOrder, d.Price })
+                    .Select(g => new Nakladnaya()
+                    {
+                        Name = g.Key.Name,
+                        Provider = g.Key.Provider,
+                        Recipient = g.Key.Recipient,
+                        DateOrder = g.Key.DateOrder,
+                        Price = g.Key.Price,
+                        Quantity = g.Sum(d => d.Quantity)
+                    }).ToList();
                 UpdateForm(records);
             }
         }
@@ -74,7 +84,7 @@ namespace Les29
                     worksheet.Cells[i + 2, 3].Value = records[i].Price;
                     worksheet.Cells[i + 2, 4].Value = records[i].Provider;
                     worksheet.Cells[i + 2, 5].Value = records[i].Recipient;
-                    worksheet.Cells[i + 2, 6].Value = records[i].DateOrder;
+                    worksheet.Cells[i + 2, 6].Value = Convert.ToDateTime(records[i].DateOrder);
                 }
                 newBook.SaveAs(fileInfo);
             }
@@ -82,13 +92,13 @@ namespace Les29
 
         private void dataGridViewTovar_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(direction==ListSortDirection.Ascending) direction = ListSortDirection.Descending;
+            if (direction == ListSortDirection.Ascending) direction = ListSortDirection.Descending;
             else direction = ListSortDirection.Ascending;
             List<Nakladnaya> temp = new List<Nakladnaya>();
             switch (e.ColumnIndex)
             {
-                case 0: 
-                    { 
+                case 0:
+                    {
                         if (direction == ListSortDirection.Ascending)
                             temp = records.OrderBy(p => p.Name).ToList();
                         else
@@ -137,6 +147,44 @@ namespace Les29
                     break;
             }
             UpdateForm(temp);
+        }
+
+        private void buttonWord_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTovar.SelectedRows.Count != 0)
+            {
+                int index=dataGridViewTovar.CurrentRow.Index;
+                Nakladnaya current = records[index];
+                Word.Application wordApp = new Word.Application();
+                string path = Environment.CurrentDirectory + @"\Товарная накладная.docx";
+                Word.Document doc = wordApp.Documents.Open(path);
+                Word.Range range = doc.Content;
+                range.Find.Execute("номер", ReplaceWith:(index+1).ToString());
+                range = doc.Content;
+                range.Find.Execute("дата", ReplaceWith:current.DateOrder);
+                range = doc.Content;
+                range.Find.Execute("ФИО поставщика", ReplaceWith: current.Provider);
+                range = doc.Content;
+                range.Find.Execute("ФИО покупателя", ReplaceWith: current.Recipient);
+                range = doc.Content;
+                range.Find.Execute("Адрес_доставки", ReplaceWith: "Остров сокровищ");
+                range = doc.Content;
+                range.Find.Execute("Сумма_итого1", ReplaceWith:current.Price*current.Quantity);
+                range = doc.Content;
+                range.Find.Execute("кол-во", current.Quantity);
+                range = doc.Content;
+                range.Find.Execute("cумма_итого2", ReplaceWith: current.Price * current.Quantity);
+                range = doc.Content;
+                doc.SaveAs(Environment.CurrentDirectory +$"\\Накладная {index+1}.docx");
+                if (File.Exists(Environment.CurrentDirectory + $"\\Накладная {index + 1}.docx"))
+                    MessageBox.Show("Накладная успешно создана!");
+                doc.Close();
+                wordApp.Quit();
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку!");
+            }
         }
     }
 }
