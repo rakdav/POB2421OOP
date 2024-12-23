@@ -174,7 +174,6 @@ namespace Les29
                 range.Find.Execute("кол-во", current.Quantity);
                 range = doc.Content;
                 range.Find.Execute("cумма_итого2", ReplaceWith: current.Price * current.Quantity);
-                range = doc.Content;
                 doc.SaveAs(Environment.CurrentDirectory +$"\\Накладная {index+1}.docx");
                 if (File.Exists(Environment.CurrentDirectory + $"\\Накладная {index + 1}.docx"))
                     MessageBox.Show("Накладная успешно создана!");
