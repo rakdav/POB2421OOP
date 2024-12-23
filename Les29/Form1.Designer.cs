@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             файлToolStripMenuItem = new ToolStripMenuItem();
             открытьToolStripMenuItem = new ToolStripMenuItem();
+            сохранитьXlsxToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             выходToolStripMenuItem = new ToolStripMenuItem();
             dataGridViewTovar = new DataGridView();
@@ -49,7 +50,7 @@
             // 
             // файлToolStripMenuItem
             // 
-            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { открытьToolStripMenuItem, toolStripSeparator1, выходToolStripMenuItem });
+            файлToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { открытьToolStripMenuItem, сохранитьXlsxToolStripMenuItem, toolStripSeparator1, выходToolStripMenuItem });
             файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             файлToolStripMenuItem.Size = new Size(48, 20);
             файлToolStripMenuItem.Text = "Файл";
@@ -57,19 +58,26 @@
             // открытьToolStripMenuItem
             // 
             открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            открытьToolStripMenuItem.Size = new Size(133, 22);
+            открытьToolStripMenuItem.Size = new Size(180, 22);
             открытьToolStripMenuItem.Text = "Открыть ...";
             открытьToolStripMenuItem.Click += открытьToolStripMenuItem_Click;
+            // 
+            // сохранитьXlsxToolStripMenuItem
+            // 
+            сохранитьXlsxToolStripMenuItem.Name = "сохранитьXlsxToolStripMenuItem";
+            сохранитьXlsxToolStripMenuItem.Size = new Size(180, 22);
+            сохранитьXlsxToolStripMenuItem.Text = "Сохранить xlsx ...";
+            сохранитьXlsxToolStripMenuItem.Click += сохранитьXlsxToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(130, 6);
+            toolStripSeparator1.Size = new Size(177, 6);
             // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            выходToolStripMenuItem.Size = new Size(133, 22);
+            выходToolStripMenuItem.Size = new Size(180, 22);
             выходToolStripMenuItem.Text = "Выход";
             // 
             // dataGridViewTovar
@@ -79,6 +87,7 @@
             dataGridViewTovar.Name = "dataGridViewTovar";
             dataGridViewTovar.Size = new Size(776, 411);
             dataGridViewTovar.TabIndex = 1;
+            dataGridViewTovar.ColumnHeaderMouseClick += dataGridViewTovar_ColumnHeaderMouseClick;
             // 
             // Form1
             // 
@@ -105,5 +114,6 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem выходToolStripMenuItem;
         private DataGridView dataGridViewTovar;
+        private ToolStripMenuItem сохранитьXlsxToolStripMenuItem;
     }
 }

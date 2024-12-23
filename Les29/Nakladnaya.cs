@@ -12,15 +12,15 @@ namespace Les29
         [DisplayName("Название товара")]
         public string? Name {  get; set; }
         [DisplayName("Количество")]
-        public string? Quantity { get;set; }
+        public int Quantity { get;set; }
        [DisplayName("Стоимость")]
-        public string? Price {  get; set; }
+        public decimal Price {  get; set; }
         [DisplayName("ФИО поставщика")]
         public string? Provider { get; set; }
         [DisplayName("ФИО получателя")]
         public string? Recipient { get; set; }
         [DisplayName("Дата поставки")]
-        public string? DateOrder { get; set; }
+        public DateTime? DateOrder { get; set; }
 
         public int CompareTo(object? obj)
         {
