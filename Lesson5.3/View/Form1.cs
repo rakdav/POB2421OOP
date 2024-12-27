@@ -15,7 +15,7 @@ namespace Lesson5._3.View
            // person.Move();
             Human human = new Human("Василий");
            // MessageBox.Show(human.Name);
-            human.Name = "Boris";
+           // human.Name = "Boris";
             MessageBox.Show(human.Name);
         }
         

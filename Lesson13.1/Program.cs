@@ -24,7 +24,6 @@ PersonMessanger<Message> person = new PersonMessanger<Message>();
 Instantiator<string> instantiatorString = new Instantiator<string>();
 Instantiator<int> instantiatorInt = new Instantiator<int>();
 List<Book> list = new List<Book>();
-<<<<<<< HEAD
 list.Add(new Book(
     1,
     "fs",
@@ -36,14 +35,13 @@ books.AddBook(new Book(1,
     "fs",
     "sfs",
     DateTime.Parse("2024-01-01")));
-foreach(Book i in books.GetBooks())
+foreach (Book i in books.GetBooks())
 {
-    Console.WriteLine(i.Id+" "+i.Title+" "+i.Author+" "+i.PublicationYear);
+    Console.WriteLine(i.Id + " " + i.Title + " " + i.Author + " " + i.PublicationYear);
 }
-=======
 list.Add(new Book()
 {
-    Id = 1,
+    //Id = 1,
     Author = "fs",
     PublicationYear=DateTime.Parse("2024-01-01"),
     Title="dsds"
