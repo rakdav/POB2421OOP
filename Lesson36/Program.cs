@@ -19,13 +19,17 @@ string name = Console.ReadLine()!;
 Console.Write("Введите ваш баланс:");
 decimal balance=decimal.Parse(Console.ReadLine()!);
 Person person = persons.FirstOrDefault(p=>p.Name==name)!;
+decimal discount = 0;
+
 if (person == null)
     Console.WriteLine("Такого пользователя нет!");
 else
 {
     person.Balance=balance;
+    decimal Startbalance = balance;
     SalePerson salePerson=new SalePerson();
     salePerson.Customer=person;
+    salePerson.Sales = new List<Sale>();
     do
     {
         Console.Clear();
@@ -33,23 +37,45 @@ else
         Console.WriteLine("Список товаров:");
         foreach (var item in priceList)
         {
-            Console.WriteLine($"Id:{item.Id}. Name:{item.Name} Type:{item.ProductType} Price:{item.Price}");
+            if (Startbalance - person.Balance > 50000)
+            {
+                discount = 0.1M;
+            }
+            Console.WriteLine($"Id:{item.Id}. Name:{item.Name} Type:{item.ProductType}"+
+                $" Price:{item.Price-item.Price*discount}");
+            
         }
         Console.WriteLine("Список покупок:");
         foreach (var item in salePerson.Sales)
         {
-            Console.WriteLine(item.Product.Name+" "+item.Count+" "+item.Total());
+            Console.WriteLine(item.Product.Name + " " + item.Count + " " + item.Total());
         }
-        Console.Write("Введите номер товара:");
-        int id = int.Parse(Console.ReadLine()!);
-        Console.Write("Введите его количество:");
-        int count = int.Parse(Console.ReadLine()!);
-        Sale sale = new Sale();
-        sale.Product=priceList.First(p=>p.Id==id);
-        sale.Count=count;
-        sale.Total();
-        salePerson.Sales.Add(sale);
-
+        if (person.Balance > 0)
+        {
+            Console.Write("Введите номер товара:");
+            int id = int.Parse(Console.ReadLine()!);
+            Console.Write("Введите его количество:");
+            int count = int.Parse(Console.ReadLine()!);
+            Sale sale = new Sale();
+            sale.Product = priceList.First(p => p.Id == id);
+            sale.Count = count;
+            if (person.Balance >= sale.Total())
+            {
+                sale.Discount = discount;
+                salePerson.Sales.Add(sale);
+                person.Balance -= sale.Total();
+            }
+            else
+            {
+                Console.WriteLine("Не хватает средств для покупки!");
+                Console.ReadKey();
+            }
+        }
+        else
+        {
+            Console.WriteLine("На счету нет денег!");
+            Console.ReadKey();
+        }
     }
     while (true);
 }
@@ -76,7 +102,8 @@ class Sale
 {
     public Product Product { get; set; }
     public int Count { get; set; }
-    public decimal Total() => Count * Product.Price;
+    public decimal Discount { get; set; }
+    public decimal Total() => Count * Product.Price- Count * Product.Price*Discount;
 }
 class SalePerson
 {
