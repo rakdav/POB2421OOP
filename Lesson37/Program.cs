@@ -1,9 +1,10 @@
-﻿using System.Security.Authentication;
+﻿using System.ComponentModel.Design;
+using System.Security.Authentication;
 List<Person> persons = new List<Person>()
 {
-    new Person(){Id=1, Name="Иван"},
-    new Person(){Id=2,Name="Борис"},
-    new Person(){Id=3,Name="Федор"}
+    new Person(){Id=1, Name="Иван",Age=35},
+    new Person(){Id=2,Name="Борис",Age=24},
+    new Person(){Id=3,Name="Федор",Age=59}
 };
 List<Product> priceList = new List<Product>
 {
@@ -45,6 +46,7 @@ if (person == null)
     Console.WriteLine("Такого пользователя нет!");
 else
 {
+    
     person.Balance = balance;
     decimal Startbalance = balance;
     SalePerson salePerson = new SalePerson();
@@ -53,12 +55,16 @@ else
     do
     {
         Console.Clear();
+        Console.WriteLine("Ваше имя:" + person.Name);
+        Console.WriteLine("Ваш возраст:" + person.Age);
         Console.WriteLine("Сегодня:"+dateSale);
         Console.WriteLine($"Ваш баланс:{person.Balance}");
         Console.WriteLine("Список товаров:");
         foreach (var item in priceList)
         {
-            discount = (calendar.ContainsValue(dateSale.Day) && calendar.ContainsKey(dateSale.Month)) ? 0.2M : 0;
+            foreach(var cal in calendar) {
+                discount = (cal.Value==dateSale.Day && cal.Key==dateSale.Month) ? 0.2M : 0;
+            }
             if (Startbalance - person.Balance > 50000)
             {
                 discount =discount+0.1M;
@@ -67,16 +73,22 @@ else
             {
                 discount =discount+ 0.05M;
             }
+            
             if (item.Discount == 0)
                 Console.WriteLine($"Id:{item.Id}. Name:{item.Name} Type:{item.ProductType}" +
                 $" Price:{item.Price - item.Price * discount}");
             else
             {
-                if(calendar.ContainsValue(dateSale.Day) && calendar.ContainsKey(dateSale.Month)==false)
+                if (item.Name == "Water" && person.Age > 30)
+                {
                     Console.WriteLine($"Id:{item.Id}. Name:{item.Name} Type:{item.ProductType}" +
-                    $" Price:{item.Price - item.Price * (item.Discount)}");
-                else Console.WriteLine($"Id:{item.Id}. Name:{item.Name} Type:{item.ProductType}" +
-                    $" Price:{item.Price - item.Price * (item.Discount+0.2M)}");
+                   $" Price:{item.Price - item.Price * (discount + 0.25M)}");
+                }else if (calendar.ContainsValue(dateSale.Day) && calendar.ContainsKey(dateSale.Month)==false)
+                            Console.WriteLine($"Id:{item.Id}. Name:{item.Name} Type:{item.ProductType}" +
+                            $" Price:{item.Price - item.Price * (item.Discount)}"); 
+                      else Console.WriteLine($"Id:{item.Id}. Name:{item.Name} Type:{item.ProductType}" +
+                            $" Price:{item.Price - item.Price * (item.Discount+0.2M)}");
+                
             }
         }
         Console.WriteLine("Список покупок:");
