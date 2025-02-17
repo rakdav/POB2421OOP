@@ -19,7 +19,5 @@
                    VerticalAlignment="Center"/>
         <Rectangle Height="160" Canvas.Left="108" Stroke="Black" 
                    Canvas.Top="226" Width="160" Fill="Green" Canvas.ZIndex="3" />
-
-
     </Canvas>
 </Window>
