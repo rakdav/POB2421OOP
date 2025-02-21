@@ -20,12 +20,12 @@
             <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="Foreground" Value="White"/>
     </Style>
-    <Style TargetType="TextBox" x:Key="TextBoxStyel">
+    <Style TargetType="TextBox" x:Key="TextBoxStyle">
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Text" Value="Текстовое поле"/>
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Height" Value="20"/>
-        </Style>
+    </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -70,7 +70,53 @@
             </Button>
         </StackPanel>
         <StackPanel Grid.Column="1">
-            <TextBox Style="{StaticResource TextBoxStyel}"/>
+            <TextBox Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Style="{StaticResource TextBoxStyle}">
+                <TextBox.Foreground>
+                    <SolidColorBrush>White</SolidColorBrush>
+                </TextBox.Foreground>
+                <TextBox.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="Red" Offset="0.0"/>
+                        <GradientStop Color="Yellow" Offset="0.5"/>
+                        <GradientStop Color="Green" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+            </TextBox>
+            <TextBox Style="{StaticResource TextBoxStyle}">
+                <TextBox.Foreground>White</TextBox.Foreground>
+                <TextBox.Background>
+                    <SolidColorBrush>LightBlue</SolidColorBrush>
+                </TextBox.Background>
+            </TextBox>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <CheckBox>Галочка</CheckBox>
+            <CheckBox>
+                <CheckBox.Content>Галочка</CheckBox.Content>
+                <CheckBox.Background>
+                    <SolidColorBrush>Black</SolidColorBrush>
+                </CheckBox.Background>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>Галочка</CheckBox.Content>
+                <CheckBox.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="White" Offset="0.0"/>
+                        <GradientStop Color="White" Offset="0.25"/>
+                        <GradientStop Color="Red" Offset="0.6"/>
+                    </RadialGradientBrush>
+                </CheckBox.Background>
+            </CheckBox>
+            <CheckBox>
+                <CheckBox.Content>Галочка</CheckBox.Content>
+                <CheckBox.Background>LightGray</CheckBox.Background>
+                <CheckBox.Foreground>LightGray</CheckBox.Foreground>
+            </CheckBox>
         </StackPanel>
     </Grid>
 </Window>
