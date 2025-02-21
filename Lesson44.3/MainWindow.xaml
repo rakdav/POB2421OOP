@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lesson44._3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1000" Width="800">
     <!--<Canvas>
         <Button Canvas.Left="50" Canvas.Top="50" Width="150" Height="25" >
             <Button.Template>
@@ -26,7 +26,8 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="DemiBold"/>
-            <Setter Property="Margin" Value="5"/>            <Setter Property="Template">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="Border" Background="#fcc8c2" BorderBrush="Red"
@@ -49,5 +50,64 @@
         <Button Content="Button 2"/>
         <Button Content="Button 3"/>
         <Button Content="Button 4" Style="{StaticResource PressedEffectButtonStyle}"/>
+        <Rectangle Width="500" Height="70">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="Red" Offset="0.0"/>
+                    <GradientStop Color="Blue" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Button Content="Градиентная кнопка" Width="500" Height="70" FontSize="20">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="Red" Offset="0.0"/>
+                    <GradientStop Color="Yellow" Offset="0.5"/>
+                    <GradientStop Color="Green" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBlock Text="Градиентная кнопка" Width="300"
+                   FontSize="30" FontWeight="Bold">
+            <TextBlock.Foreground>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="Red" Offset="0.15"/>
+                    <GradientStop Color="Orange" Offset="0.30"/>
+                    <GradientStop Color="Yellow" Offset="0.45"/>
+                    <GradientStop Color="Green" Offset="0.60"/>
+                    <GradientStop Color="LightBlue" Offset="0.75"/>
+                    <GradientStop Color="Blue" Offset="0.9"/>
+                    <GradientStop Color="Violet" Offset="1.1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+
+        <Ellipse Width="200" Height="200" Margin="50">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="0.0"/>
+                    <GradientStop Color="Black" Offset="0.15"/>
+                    <GradientStop Color="Green" Offset="0.25"/>
+                    <GradientStop Color="Green" Offset="0.5"/>
+                    <GradientStop Color="White" Offset="0.7"/>
+                    <GradientStop Color="White" Offset="0.9"/>
+                    <GradientStop Color="Black" Offset="1.0"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse Width="200" Height="200" Margin="50">
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="0.0"/>
+                    <GradientStop Color="Black" Offset="0.15"/>
+                    <GradientStop Color="Green" Offset="0.25"/>
+                    <GradientStop Color="Green" Offset="0.5"/>
+                    <GradientStop Color="White" Offset="0.7"/>
+                    <GradientStop Color="White" Offset="0.9"/>
+                    <GradientStop Color="Black" Offset="1.0"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
     </StackPanel>
+
 </Window>

@@ -12,7 +12,8 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
-    </Style>    <Style x:Key="HoverEffectButtonStyle" BasedOn="{StaticResource BaseButtonStyle}"
+    </Style>
+    <Style x:Key="HoverEffectButtonStyle" BasedOn="{StaticResource BaseButtonStyle}"
            TargetType="Button">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
