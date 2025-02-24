@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Les47._2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="150" Width="100">
     <!--<Grid>
         <Expander Header="Скрываемые элементы" IsExpanded="True">
             <StackPanel>
@@ -25,7 +25,7 @@
             </StackPanel>
         </Expander>
     </Grid>-->
-    <StackPanel Margin="10">
+    <!--<StackPanel Margin="10">
         <GroupBox Header="Чекбоксы">
             <StackPanel Margin="10">
                 <CheckBox Content="Option 1" />
@@ -55,5 +55,36 @@ Margin="5">
                 </TextBlock.Text>
             </TextBlock>
         </GroupBox>
-    </StackPanel>
+    </StackPanel>-->
+    <!--<ScrollViewer HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+        <StackPanel >
+            <TextBlock Text="Элемент 1" />
+            <TextBlock Text="Элемент 2" />
+            <TextBlock Text="Элемент 3" />
+            <TextBlock Text="Элемент 4" />
+            <TextBlock Text="Элемент 5" />
+            <TextBlock Text="Элемент 6" />
+            <TextBlock Text="Элемент 7" />
+            <TextBlock Text="Элемент 8" />
+            <TextBlock Text="Элемент 9" />
+        </StackPanel>
+    </ScrollViewer>-->
+    <ListBox>
+        <ListBoxItem>Элемент 1</ListBoxItem>
+        <ListBoxItem>
+            <Button Content="Кнопка"/>
+        </ListBoxItem>
+        <ListBoxItem>
+            <Ellipse Width="50" Height="50">
+                <Ellipse.Fill>
+                    <LinearGradientBrush>
+                        <GradientStop Color="Black" Offset="0.0"/>
+                        <GradientStop Color="Blue" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+        </ListBoxItem>
+    </ListBox>
+
 </Window>
