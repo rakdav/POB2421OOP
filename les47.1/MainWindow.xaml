@@ -17,7 +17,8 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-    </Window.Resources>
+    </Window.Resources>
+
     <Canvas>
         <!--<TextBox Canvas.Left="164" TextWrapping="Wrap"
                  Text="{Binding Source={StaticResource first},Path=Name}" Canvas.Top="133" Width="120"/>
@@ -28,16 +29,18 @@
         <TextBox Canvas.Left="165" TextWrapping="Wrap" 
                  Text="{Binding Source={StaticResource first},Path=BirthDate}" Canvas.Top="263" Width="120"/>-->
         <TextBox Canvas.Left="164" TextWrapping="Wrap"
-         Text="{Binding Name}"
+         Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                  Canvas.Top="133" Width="120"/>
         <TextBox Canvas.Left="164" TextWrapping="Wrap" 
-         Text="{Binding Surname}" 
+         Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}" 
                  Canvas.Top="175" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox Canvas.Left="164" TextWrapping="Wrap" 
-         Text="{Binding Age}"
+         Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}"
                  Canvas.Top="219" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox Canvas.Left="165" TextWrapping="Wrap" 
-         Text="{Binding BirthDate}"
+         Text="{Binding BirthDate, UpdateSourceTrigger=PropertyChanged}"
                  Canvas.Top="263" Width="120"/>
+        <Button Content="Следующий" Canvas.Left="190" Canvas.Top="303" Click="Button_Click"/>
+
     </Canvas>
 </Window>
