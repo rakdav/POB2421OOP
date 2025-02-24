@@ -6,7 +6,54 @@
         xmlns:local="clr-namespace:Les47._2"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <!--<Grid>
+        <Expander Header="Скрываемые элементы" IsExpanded="True">
+            <StackPanel>
+            <StackPanel>
+                <CheckBox Content="Галочка 1" />
+                <CheckBox Content="Галочка 2" />
+                <CheckBox Content="Галочка 3" />
+            </StackPanel>
+            <Expander Header="Скрытые элементы" IsExpanded="False"
+                      Margin="15,5,5,5">
+                <StackPanel Margin="10">
+                    <Button Content="Кнопка 1" Padding="0,5" Margin="5"/>
+                    <Button Content="Кнопка 2" Padding="0,5" Margin="5"/>
+                    <Button Content="Кнопка 3" Padding="0,5" Margin="5"/>
+                </StackPanel>
+            </Expander>
+            </StackPanel>
+        </Expander>
+    </Grid>-->
+    <StackPanel Margin="10">
+        <GroupBox Header="Чекбоксы">
+            <StackPanel Margin="10">
+                <CheckBox Content="Option 1" />
+                <CheckBox Content="Option 2" />
+                <CheckBox Content="Option 3" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Кнопки">
+            <StackPanel Margin="10">
+                <Button Content="Option 1" Margin="5"/>
+                <Button Content="Option 2" Margin="5"/>
+                <Button Content="Option 3" Margin="5"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox>
+            <GroupBox.Header>
+                <Button Content="Текст о групбоксах"/>
+            </GroupBox.Header>
+            <TextBlock TextWrapping="Wrap"
+Margin="5">
+                <TextBlock.Text>
+                    Представляет собой контейнерный элемент управления,
+который используется для группировки других элементов
+управления внутри рамки с заголовком.
+Он обычно используется для визуального разделения и
+организации элементов управления на форме.
+                </TextBlock.Text>
+            </TextBlock>
+        </GroupBox>
+    </StackPanel>
 </Window>
