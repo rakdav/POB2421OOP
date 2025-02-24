@@ -17,10 +17,12 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-        </Window.Resources>    <StackPanel>
+        </Window.Resources>
+    <StackPanel>
         <Rectangle x:Name="myRectangle" Width="150" Height="100" 
                    Style="{DynamicResource rectangleStyle}" />
         <Button x:Name="btn" Content="ChangeRectCtyle" Margin="10" Click="btn_Click"/>
-    </StackPanel>
+    </StackPanel>
+
 
 </Window>
