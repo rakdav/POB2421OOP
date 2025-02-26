@@ -15,11 +15,15 @@
         </Style>
     </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="0.8*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Phones}"
+        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Phones}"
                  SelectedItem="{Binding SelectedPhone}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -31,7 +35,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedPhone}">
+        <Button Content="+" Grid.Column="0" Grid.Row="1" Margin="50 10"
+                Command="{Binding AddCommand}"/>
+        <StackPanel Grid.Column="1" Grid.RowSpan="2" DataContext="{Binding SelectedPhone}">
             <TextBlock Text="Выбранный элемент"/>
             <TextBlock Text="Mодель"/>
             <TextBlock Text="{Binding Title,UpdateSourceTrigger=PropertyChanged}"/>

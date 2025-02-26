@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lesson47._3.Infrastructure.Commands;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Lesson47._3
 {
@@ -21,6 +23,17 @@ namespace Lesson47._3
                 OnProperyChanged(nameof(SelectedPhone));
             }
         }
+        private RelayCommand addCommand;
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                return addCommand ?? (addCommand=new RelayCommand(obj =>
+                {
+                    MessageBox.Show("Hello");
+                }));
+            }
+        }
         public ObservableCollection<Phone> Phones { get; set; }
         public ApplicationViewModel()
         {
@@ -32,6 +45,7 @@ namespace Lesson47._3
                 new Phone{Title="IPhone 15",Company="Apple",Price=120000}
             };
         }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnProperyChanged([CallerMemberName] string prop = "")
         {
