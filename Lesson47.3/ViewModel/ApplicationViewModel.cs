@@ -1,4 +1,5 @@
 ﻿using Lesson47._3.Infrastructure.Commands;
+using Lesson47._3.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,7 +31,13 @@ namespace Lesson47._3
             {
                 return addCommand ?? (addCommand=new RelayCommand(obj =>
                 {
-                    MessageBox.Show("Hello");
+                    PhoneView phoneView = new PhoneView(new Phone());
+                    if (phoneView.ShowDialog() == true)
+                    {
+                        Phone phone = phoneView.Phone;
+                        Phones.Add(phone);
+                        SelectedPhone = phone;
+                    }
                 }));
             }
         }
