@@ -41,6 +41,49 @@ namespace Lesson47._3
                 }));
             }
         }
+        private RelayCommand editCommand;
+        public RelayCommand EditCommand
+        {
+            get
+            {
+                return editCommand ?? (editCommand = new RelayCommand((selectedItem) =>
+                {
+                    Phone? phone = selectedItem as Phone;
+                    if (phone == null) return;
+                    PhoneView phoneView = new PhoneView(phone);
+                    if (phoneView.ShowDialog() == true)
+                    {
+                       if(Phones.Contains(phone))
+                       {
+                            int index = Phones.IndexOf(phone);
+                            Phones[index].Title =  phoneView.Phone.Title;
+                            Phones[index].Company = phoneView.Phone.Company;
+                            Phones[index].Price = phoneView.Phone.Price;
+                        }
+                    }
+                }));
+            }
+        }
+        private RelayCommand deleteCommand;
+        public RelayCommand DeleteCommand
+        {
+            get
+            {
+                return deleteCommand ?? (deleteCommand = new RelayCommand((selectedItem) =>
+                {
+                    Phone? phone = selectedItem as Phone;
+                    if (phone == null) return;
+                    if (MessageBox.Show("Вы действительно хотите удалить элемент?","Внимание", MessageBoxButton.OKCancel,MessageBoxImage.Warning)==MessageBoxResult.OK)
+                    {
+                        if (Phones.Contains(phone))
+                        {
+                            int index = Phones.IndexOf(phone);
+                            Phones.RemoveAt(index);
+                        }
+                    }
+                }));
+            }
+        }
         public ObservableCollection<Phone> Phones { get; set; }
         public ApplicationViewModel()
         {

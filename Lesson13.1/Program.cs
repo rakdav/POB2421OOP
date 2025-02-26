@@ -38,17 +38,17 @@ books.AddBook(new Book(1,
 foreach (Book i in books.GetBooks())
 {
     Console.WriteLine(i.Id + " " + i.Title + " " + i.Author + " " + i.PublicationYear);
-}
-list.Add(new Book()
-{
-    //Id = 1,
-    Author = "fs",
-    PublicationYear=DateTime.Parse("2024-01-01"),
-    Title="dsds"
-});
-Catalog<Book> books = new Catalog<Book>();
-books.AddBook(new Book());
->>>>>>> Lesson14.1-1
+//}
+//list.Add(new Book()
+//{
+//    //Id = 1,
+//    Author = "fs",
+//    PublicationYear=DateTime.Parse("2024-01-01"),
+//    Title="dsds"
+//});
+//Catalog<Book> books = new Catalog<Book>();
+//books.AddBook(new Book());
+//>>>>>>> Lesson14.1-1
 class Message
 {
     public string? Text { get; }
