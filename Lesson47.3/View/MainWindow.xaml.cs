@@ -19,6 +19,7 @@ namespace Lesson47._3
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ApplicationViewModel();
         }
     }
 }
