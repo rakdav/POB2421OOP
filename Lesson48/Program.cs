@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text;
 HttpListener server = new HttpListener();
-server.Prefixes.Add("http://127.0.0.1:8888/connection/");
+server.Prefixes.Add("http://192.168.10.94:8888/connection/");
 server.Start();
 while (true)
 {
